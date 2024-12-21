@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ping Pong Game</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #1f4037, #99f2c8);
+            font-family: Arial, sans-serif;
+            color: white;
+            overflow: hidden;
+        }
+
+        canvas {
+            border: 5px solid #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .controls {
+            margin-top: 20px;
+        }
+
+        button {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #c0392b;
+        }
+
+        .touch-controls {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 200px;
+            margin-top: 20px;
+        }
+
+        .touch-controls button {
+            width: 45%;
+            height: 50px;
+            font-size: 18px;
+        }
+
+        /* Hide touch controls for screens larger than 600px */
+        @media (min-width: 600px) {
+            .touch-controls {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+    <div class="controls">
+        <button id="startButton">Start Game</button>
+    </div>
+    <div class="touch-controls">
+        <button id="moveUp">⬆️</button>
+        <button id="moveDown">⬇️</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const context = canvas.getContext('2d');
+        const startButton = document.getElementById('startButton');
+        const moveUpButton = document.getElementById('moveUp');
+        const moveDownButton = document.getElementById('moveDown');
+
+        let paddleHeight = 100, paddleWidth = 10, ballRadius = 10;
+        let playerPaddleY, opponentPaddleY, ballX, ballY, ballSpeedX, ballSpeedY;
+        let upPressed = false, downPressed = false;
+        let gameRunning = false;
+
+        // Responsive canvas
+        function resizeCanvas() {
+            canvas.width = window.innerWidth * 0.8;
+            canvas.height = window.innerHeight * 0.6;
+            playerPaddleY = (canvas.height - paddleHeight) / 2;
+            opponentPaddleY = (canvas.height - paddleHeight) / 2;
+            resetBall();
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        function drawPaddles() {
+            // Player paddle
+            context.fillStyle = "#f39c12";
+            context.fillRect(0, playerPaddleY, paddleWidth, paddleHeight);
+
+            // Opponent paddle
+            context.fillStyle = "#8e44ad";
+            context.fillRect(canvas.width - paddleWidth, opponentPaddleY, paddleWidth, paddleHeight);
+        }
+
+        function drawBall() {
+            const gradient = context.createRadialGradient(ballX, ballY, ballRadius / 2, ballX, ballY, ballRadius);
+            gradient.addColorStop(0, "#e74c3c");
+            gradient.addColorStop(1, "#c0392b");
+
+            context.beginPath();
+            context.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
+            context.fillStyle = gradient;
+            context.fill();
+            context.closePath();
+        }
+
+        function resetBall() {
+            ballX = canvas.width / 2;
+            ballY = canvas.height / 2;
+            ballSpeedX = 3 * (Math.random() > 0.5 ? 1 : -1);
+            ballSpeedY = 3 * (Math.random() > 0.5 ? 1 : -1);
+        }
+
+        function updateOpponentPaddle() {
+            const opponentCenter = opponentPaddleY + paddleHeight / 2;
+            if (ballY > opponentCenter + 10) {
+                opponentPaddleY += 3;
+            } else if (ballY < opponentCenter - 10) {
+                opponentPaddleY -= 3;
+            }
+            opponentPaddleY = Math.max(Math.min(opponentPaddleY, canvas.height - paddleHeight), 0);
+        }
+
+        function update() {
+            if (!gameRunning) return;
+
+            if (upPressed && playerPaddleY > 0) {
+                playerPaddleY -= 5;
+            }
+            if (downPressed && playerPaddleY < canvas.height - paddleHeight) {
+                playerPaddleY += 5;
+            }
+
+            ballX += ballSpeedX;
+            ballY += ballSpeedY;
+
+            if (ballY + ballSpeedY > canvas.height - ballRadius || ballY + ballSpeedY < ballRadius) {
+                ballSpeedY = -ballSpeedY;
+            }
+
+            if (ballX - ballRadius < paddleWidth && ballY > playerPaddleY && ballY < playerPaddleY + paddleHeight) {
+                ballSpeedX = -ballSpeedX;
+            }
+
+            if (ballX + ballRadius > canvas.width - paddleWidth && ballY > opponentPaddleY && ballY < opponentPaddleY + paddleHeight) {
+                ballSpeedX = -ballSpeedX;
+            }
+
+            if (ballX + ballRadius < 0 || ballX - ballRadius > canvas.width) {
+                gameRunning = false;
+                startButton.style.display = "block";
+                startButton.innerText = "Game Over! Restart?";
+            }
+
+            updateOpponentPaddle();
+
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            context.fillStyle = "#34495e";
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            context.strokeStyle = "#ecf0f1";
+            context.setLineDash([10, 15]);
+            context.beginPath();
+            context.moveTo(canvas.width / 2, 0);
+            context.lineTo(canvas.width / 2, canvas.height);
+            context.stroke();
+
+            drawPaddles();
+            drawBall();
+        }
+
+        function keyDownHandler(e) {
+            if (e.key === "Up" || e.key === "ArrowUp") {
+                upPressed = true;
+            } else if (e.key === "Down" || e.key === "ArrowDown") {
+                downPressed = true;
+            }
+        }
+
+        function keyUpHandler(e) {
+            if (e.key === "Up" || e.key === "ArrowUp") {
+                upPressed = false;
+            } else if (e.key === "Down" || e.key === "ArrowDown") {
+                downPressed = false;
+            }
+        }
+
+        function startGame() {
+            gameRunning = true;
+            startButton.style.display = "none";
+            resetBall();
+            playerPaddleY = (canvas.height - paddleHeight) / 2;
+            opponentPaddleY = (canvas.height - paddleHeight) / 2;
+        }
+
+        // For touch and mouse events
+        function handleTouchOrMousePress(e, isPressing) {
+            if (e.target === moveUpButton || e.target === moveDownButton) {
+                if (e.target === moveUpButton) {
+                    upPressed = isPressing;
+                } else if (e.target === moveDownButton) {
+                    downPressed = isPressing;
+                }
+            }
+        }
+
+        // Handle touch or mouse start
+        moveUpButton.addEventListener("touchstart", (e) => handleTouchOrMousePress(e, true));
+        moveUpButton.addEventListener("mousedown", (e) => handleTouchOrMousePress(e, true));
+
+        // Handle touch or mouse end
+        moveUpButton.addEventListener("touchend", (e) => handleTouchOrMousePress(e, false));
+        moveUpButton.addEventListener("mouseup", (e) => handleTouchOrMousePress(e, false));
+
+        moveDownButton.addEventListener("touchstart", (e) => handleTouchOrMousePress(e, true));
+        moveDownButton.addEventListener("mousedown", (e) => handleTouchOrMousePress(e, true));
+
+        moveDownButton.addEventListener("touchend", (e) => handleTouchOrMousePress(e, false));
+        moveDownButton.addEventListener("mouseup", (e) => handleTouchOrMousePress(e, false));
+
+        startButton.addEventListener("click", startGame);
+        document.addEventListener("keydown", keyDownHandler);
+        document.addEventListener("keyup", keyUpHandler);
+
+        setInterval(update, 10);
+    </script>
+</body>
+</html>

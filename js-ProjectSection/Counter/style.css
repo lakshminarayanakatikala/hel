@@ -1,0 +1,91 @@
+/* Base styles */
+body {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #f0f0f0; /* Light background for better contrast */
+    overflow: hidden;
+}
+
+/* Label styles */
+#lable {
+    font-size: 6em; /* Adjusted for better responsiveness */
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 20px;
+}
+
+/* Main container styles */
+#main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    max-width: 600px; /* Restricts maximum width for larger screens */
+    height: auto;
+    background: linear-gradient(to bottom, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0));
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Button container */
+#btnContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
+    gap: 10px;
+}
+
+/* Button styles */
+.btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background: linear-gradient(45deg, rgb(121, 121, 203), rgb(181, 145, 220));
+    cursor: pointer;
+    border: none;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.btn:hover {
+    background: linear-gradient(45deg, rgb(91, 91, 193), rgb(161, 125, 200));
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #lable {
+        font-size: 4em;
+    }
+    #main {
+        width: 80vw;
+        padding: 15px;
+    }
+    .btn {
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    #lable {
+        font-size: 3em;
+    }
+    #main {
+        width: 90vw;
+        padding: 10px;
+    }
+    .btn {
+        font-size: 0.8em;
+        padding: 6px 12px;
+    }
+    #btnContainer {
+        flex-direction: column; /* Stacks buttons vertically for small screens */
+        gap: 8px;
+    }
+}

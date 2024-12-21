@@ -1,0 +1,723 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding-top: 70px;
+  background: linear-gradient(hsla(240, 69%, 34%, 0.237),#add8e694,lavender,hsla(60, 100%, 50%, 0.493));
+
+}
+
+/* Navbar */
+#logo {
+  transition: transform 0.3s ease;
+  border-radius: 100%;
+}
+#logo:hover {
+  transform: scale(1.1);
+}
+
+
+/* Navbar links */
+.navbar-nav .nav-link {
+  color: #fff; 
+  font-weight: 500;
+  transition: color 0.3s ease; 
+}
+#offcanvasNavbarLabel{
+  color: white;
+}
+
+/* Navbar link hover effect */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #00bcd4; 
+}
+
+/* Offcanvas styles */
+.offcanvas {
+  background-color: #444; /* Matches dark theme of navbar */
+}
+
+
+.btn-close {
+  filter: brightness(0) invert(1); /* Makes close button white */
+}
+
+
+/* curusal section  */
+
+#carouselExampleCaptions {
+  margin-top: 0.49%; 
+  border: 1px solid red;
+}
+
+.carousel-inner img {
+  height: 70vh;
+  /* object-fit: cover; */
+}
+.carousel-caption h5 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+}
+.carousel-caption p {
+  font-size: 1.2rem;
+  color: #ddd;
+}
+.carousel-indicators button {
+  background-color: #fff;
+}
+
+/* Games Section */
+#games {
+  margin-top: 2%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+  border-radius: 10px;
+  gap: 20px;
+  border: 1px solid red;
+}
+
+.gameImg {
+  width: 100%;
+  height: 75%;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.gameImg:hover {
+  transform: scale(1.05);
+}
+
+.game-card {
+  background: #f8f9fa;
+  border-radius: 10px;
+  text-align: center;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  border: 1px solid blue;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+}
+
+.game-card button {
+  margin-top: 10px;
+  background-color: #007bff;
+  width: 100%;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn {
+  width: 140px;
+  height: 50px;
+  background: linear-gradient(to top, #00154c, #12376e, #23487f);
+  color: #fff;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.btn span {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: top 0.5s;
+  color: white;
+}
+
+.btn-text-one {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.btn-text-two {
+  position: absolute;
+  width: 100%;
+  top: 150%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.btn:hover .btn-text-one {
+  top: -100%;
+}
+
+.btn:hover .btn-text-two {
+  top: 50%;
+}
+
+.game-card button:hover {
+  background-color: #0056b3;
+}
+
+/* General styling for the NEWS  section */
+
+#news {
+  padding: 2%;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #333;
+  border: 1px solid red;
+ 
+}
+
+
+.nav-bar-section {
+  background-color: #145a63;
+  box-shadow: 0 7px 10px rgba(0, 0, 0, 0.3);
+  padding: 1%;
+  border-radius: 10px;
+  margin: 2%;
+  border: 1px solid red;
+}
+.news-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+.news-navbar .news-logo {
+  color: white;
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-size: 1.5rem;
+}
+#search-input {
+  max-width: 100%;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-size: 18px;
+  color: #333;
+}
+#search-button {
+  padding: 10px 20px;
+  background-color: #086a51;
+  color: #fff;
+  border: none;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+.obj-width {
+  max-width: 1200px;
+  margin: auto;
+}
+#blog-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
+.blog-card {
+  width: 280px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 1rem;
+  cursor: pointer;
+  margin: 1%;
+  overflow: hidden;
+}
+.blog-card:hover {
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+}
+.blog-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+.blog-card h2 {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+  margin: 15px 10px;
+  font-family: "Arial", sans-serif;
+}
+.blog-card p {
+  font-size: 0.9em;
+  color: #555;
+  margin: 0 10px 15px;
+  line-height: 1.4;
+  font-family: "Georgia", serif;
+}
+
+/* General styling for the movies  section */
+#movies {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient( 135deg, rgba(34, 193, 195, 0.15), rgba(253, 187, 45, 0.15) ); 
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  margin: 40px auto;
+  color: #f5f5f5;
+  font-family: "Arial", sans-serif;
+}
+
+/* Styling for the input field */
+#movieInp {
+  padding: 12px;
+  width: 80%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  outline: none;
+  font-size: 1em;
+  background: rgba(255, 255, 255, 0.2);
+  color: gray;
+  margin-bottom: 15px;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+#movieInp::placeholder {
+  color: gray;
+}
+
+#movieInp:focus {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(34, 193, 195, 0.6);
+}
+
+/* Styling for the search button */
+#movieBtn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #22c1c3, #fdbb2d);
+  color: #fff;
+  font-size: 1em;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#movieBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(34, 193, 195, 0.4);
+}
+
+/* Container for movie poster and info */
+.movieContainer {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 20px;
+  padding: 20px;
+  width: 100%;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s;
+  border: 1px solid red;
+}
+
+.movieContainer:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Styling for the poster */
+.poster {
+  border-radius: 10px;
+  margin-right: 20px;
+  text-align: right;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.5em;
+  flex-basis: 40%;
+  box-sizing: border-box;
+  border: 1px solid blue;
+}
+.poster img {
+  width: 200px;
+  height: 265px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.info {
+  width: 150px;
+  height: 265px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  margin-right: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: black;
+  flex-basis: 40%;
+  border: 1px solid red;
+}
+
+/* javascript project section */
+
+#js {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  align-items: center;
+  gap: 3%;
+  padding: 20px;
+  /* background-color: #f5f5f5; */
+  border-radius: 10px;
+  border: 1px solid red;
+  margin-bottom: 5%;
+}
+
+/* Style for the task card */
+.task-card {
+  width: 300px;
+  padding: 5%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+  border: 1px solid red;
+}
+
+/* Add a subtle hover effect */
+.task-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Style for the image */
+.task-img {
+  width: 100%;
+  height: 180px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-bottom: 15px;
+  background-color: #e0e0e0; /* Placeholder background for when no image is loaded */
+}
+
+/* Style for the button */
+.task-card button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.task-card button:hover {
+  background-color: #0056b3;
+}
+
+
+/* Footer Styles */
+
+.footer-body{
+  background-color: #333333; 
+  padding: 3% 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid red;
+}
+.copyRight{
+  background-color: #111111; 
+  color: #dcdcdc; 
+  width: 100%;
+  padding: 1.5%;
+  text-align: center;
+}
+.footer-socialmedia{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 1%;
+}
+.footer-socialmedia img{
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+}
+
+.styHeading {
+  margin: 2%;
+  font-weight: bold;
+  color: #ffa500; 
+  font-size: 2rem; 
+}
+
+            /* media queres */
+
+@media (max-width: 576px) {
+  /* Navbar adjustments */
+  .navbar-brand img {
+      height: 35px; 
+  }
+  .navbar-toggler {
+      font-size: 0.8rem; 
+  }
+  .offcanvas .nav-link {
+      font-size: 1rem; 
+      margin-bottom: 0.5rem;
+  }
+
+
+   /* curusal adjustments */
+  #carouselExampleCaptions {
+    border: 1px solid yellow;
+    margin: -10px;
+  }
+  
+  .carousel-inner img {
+    height: 40vh;
+   
+  }
+
+  /* Game cards section */
+  .game-card {
+      width: 100%; /* Stack game cards vertically */
+      margin-bottom: 1rem;
+  }
+  .game-card img {
+      max-width: 100%; /* Ensure the image fits the container */
+      height: 70%;
+  }
+  .btn {
+      height: 25%;
+  }
+
+  #games {
+    margin-top: 2%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 20px;
+  }
+
+  /* News section */
+  .news-navbar {
+      flex-direction: column; 
+      align-items: flex-start;
+  }
+  .search-container {
+      width: 100%; /* Make search bar take full width */
+      margin-top: 0.5rem;
+      text-align: center;
+  }
+  .search-container input {
+      width: 90%; /* Adjust input size for smaller screens */
+      font-size: 0.9rem;
+      margin: 2%;
+  }
+  .search-container button {
+      font-size: 0.9rem;
+  }
+  #blog-container {
+    display: grid;
+    grid-template-columns: auto auto ;
+    gap: 0.5rem;
+  }
+  .blog-card {
+    width: 100%;
+  }
+
+  /* Movies section */
+  #movieInp {
+      width: 90%; 
+      margin: 0 auto;
+      font-size: 0.9rem;
+      margin-bottom: 2%;
+  }
+  #movieBtn {
+      font-size: 0.9rem;
+  }
+  .movieContainer {
+      flex-direction: column; /* Stack movie details vertically */
+      gap: 1rem;
+  }
+  .poster{
+    text-align: center;
+  }
+  .poster img {
+    width: 100%;
+    height: 80%;
+  }
+  .poster, .info {
+      width: 100%; 
+      
+  }
+
+  /* JavaScript projects section */
+    
+#js {
+  grid-template-columns: auto auto ;
+  gap: 1%;
+  padding-bottom: 10%;
+ 
+}
+
+
+.task-card {
+  width: 100%;
+  height: 100%;
+}
+.task-img {
+  width: 100%;
+}
+  /* General heading adjustments */
+  .styHeading {
+      font-size: 1.5rem;
+  }
+}
+
+
+
+/* General styles for tablet responsiveness */
+@media (min-width: 600px) and (max-width: 900px) {
+ 
+ /* Navbar adjustments */
+ .navbar-brand img {
+  height: 40px; 
+}
+.navbar-toggler {
+  font-size: 0.8rem; 
+}
+.offcanvas .nav-link {
+  font-size: 1rem; 
+  margin-bottom: 0.5rem;
+}
+
+
+/* curusal adjustments */
+#carouselExampleCaptions {
+margin: -10px;
+}
+
+.carousel-inner img {
+height: 55vh;
+
+}
+
+/* Game cards section */
+.game-card {
+  width: 100%; 
+  margin-bottom: 1rem;
+}
+.game-card img {
+  max-width: 100%; 
+  height: 70%;
+}
+.btn {
+  height: 25%;
+}
+
+#games {
+margin-top: 2%;
+padding: 20px;
+display: grid;
+grid-template-columns: auto auto;
+gap: 20px;
+}
+
+/* News section */
+.news-navbar {
+  flex-direction: column; 
+  align-items: flex-start;
+}
+.search-container {
+  width: 100%; 
+  margin-top: 0.5rem;
+  text-align: center;
+}
+.search-container input {
+  width: 90%;
+  font-size: 0.9rem;
+  margin: 2%;
+}
+.search-container button {
+  font-size: 0.9rem;
+}
+#blog-container {
+display: grid;
+grid-template-columns: auto auto ;
+gap: 0.5rem;
+}
+.blog-card {
+width: 100%;
+}
+
+/* Movies section */
+#movieInp {
+  width: 90%; 
+  margin: 0 auto;
+  font-size: 0.9rem;
+  margin-bottom: 2%;
+}
+#movieBtn {
+  font-size: 0.9rem;
+}
+.movieContainer {
+  flex-direction: column; /* Stack movie details vertically */
+  gap: 1rem;
+}
+.poster{
+text-align: center;
+}
+.poster img {
+width: 50%;
+height: 40%;
+border: 20px;
+}
+.poster, .info {
+  width: 100%; 
+  
+}
+
+/* JavaScript projects section */
+
+#js {
+grid-template-columns: auto auto ;
+gap: 1%;
+padding-bottom: 10%;
+
+}
+
+
+.task-card {
+width: 100%;
+height: 100%;
+}
+.task-img {
+width: 100%;
+}
+
+.styHeading {
+  font-size: 1.7rem;
+}
+
+
+}
+
