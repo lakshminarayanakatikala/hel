@@ -40,8 +40,8 @@ let searchInput = document.getElementById("search-input");
 let searchBtn = document.getElementById("search-button");
 
 let currentDate=new Date()
-const year = currentDate.getFullYear();      // Get the year (e.g., 2024)
-const month = currentDate.getMonth();   // Get the month (0-based, so add 1)
+const year = currentDate.getFullYear();       // Get the year (e.g., 2024)
+const month = currentDate.getMonth();        // Get the month (0-based, so add 1)
 const day = currentDate.getDate();          // Get the day
 
 let date=`${year}-${month}-${day}` 
@@ -192,5 +192,5 @@ alert("Please enter input.");
           window.open("./js-ProjectSection/Calculator/index.html" , "_self")
         }
         function project6() {
-          window.open("./Weather APP/index.html" , "_self")
+          window.open("./js-ProjectSection/Qezz/index.html" , "_self")
         }
