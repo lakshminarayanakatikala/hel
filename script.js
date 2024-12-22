@@ -47,12 +47,14 @@ const day = currentDate.getDate();          // Get the day
 let date=`${year}-${month}-${day}` 
 // console.log(date)   // Example: "2024-10-18"
 
+const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+
 async function newsApi(inputvalue) { 
 try {
     const apiUrl = `https://newsapi.org/v2/everything?q=${inputvalue}&pageSize=16&from=${date}&sortBy=publishedAt&apiKey=${apiKey}`
     const response = await fetch(apiUrl);
     const data = await response.json();
-    console.log(data)
+    // console.log(data)
 
     blogContainer.innerHTML = "";
     data.articles.forEach((article) => { 
@@ -88,25 +90,25 @@ try {
          }
     }
 
-searchBtn.addEventListener("click", () => {
-if (searchInput.value !== "") {
-newsApi(searchInput.value.trim());
-searchInput.value = ""; 
-} else {
-alert("Please enter input");
-}
-});
+    searchBtn.addEventListener("click", () => {
+    if (searchInput.value !== "") {
+    newsApi(searchInput.value.trim());
+    searchInput.value = ""; 
+    } else {
+    alert("Please enter input");
+    }
+    });
 
-searchInput.addEventListener("keydown", (event) => {
-if (event.key === "Enter") {
-if (searchInput.value !== "") {
-newsApi(searchInput.value.trim());
-searchInput.value = "";
-} else {
-alert("Please enter input.");
-}
-}
-});
+    searchInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+    if (searchInput.value !== "") {
+    newsApi(searchInput.value.trim());
+    searchInput.value = "";
+    } else {
+    alert("Please enter input.");
+    }
+    }
+    });
 
 
 
@@ -194,3 +196,9 @@ alert("Please enter input.");
         function project6() {
           window.open("./js-ProjectSection/Qezz/index.html" , "_self")
         }
+
+
+
+
+
+
