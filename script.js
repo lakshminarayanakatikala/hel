@@ -9,6 +9,47 @@
     });
   });
 
+  // -------------------------------------------------------------------------------------
+
+  // styHeading  h2 tags
+
+const textElements = document.querySelectorAll(".styHeading");
+
+function typeLetters(element, text, index, adding) {
+    if (adding) {
+        element.innerHTML =
+            `<span class="blink">${text.charAt(0)}</span>` + text.slice(1, index + 1);
+        index++;
+        if (index === text.length) {
+            adding = false;
+            setTimeout(() => typeLetters(element, text, index, adding), 1000);
+            return;
+        }
+    } else {
+        index--;
+        element.innerHTML =
+            `<span class="blink">${text.charAt(0)}</span>` + text.slice(1, index);
+        if (index === 0) {
+            adding = true;
+        }
+    }
+    setTimeout(() => typeLetters(element, text, index, adding), 100);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    textElements.forEach((textElement) => {
+        const text = textElement.innerText;
+        textElement.innerHTML = "";
+        typeLetters(textElement, text, 0, true);
+    });
+});
+
+
+  // -------------------------------------------------------------------------------------
+
+
+
+
  //   games section
 
  function fun1() {
@@ -116,10 +157,10 @@ try {
 
    //   movies section
 
-  movieBtn=document.querySelector("#movieBtn")
-  movieInp=document.querySelector("#movieInp")
-  moviePoster=document.querySelector(".poster")
-  movieInfo=document.querySelector(".info")
+      movieBtn=document.querySelector("#movieBtn")
+      movieInp=document.querySelector("#movieInp")
+      moviePoster=document.querySelector(".poster")
+      movieInfo=document.querySelector(".info")
 
 
       async function getdata(moviename) {

@@ -9,8 +9,28 @@ body {
   padding-top: 70px;
   background: linear-gradient(hsla(240, 69%, 34%, 0.237),#add8e694,lavender,hsla(60, 100%, 50%, 0.493));
   overflow-x: hidden;
-  background:linear-gradient(135deg, #ffffff, #e6ffe6)
+  /* background:linear-gradient(135deg, #ffffff, #e6ffe6) */
+  /* background-color: lavender; */
 
+}
+
+.styHeading {
+   display: inline-block;
+  font-weight: bold; 
+  border-right: 3px solid orange;
+  animation: blink 0.5s step-start infinite;
+}
+
+@keyframes blink {
+  50% {
+      border-color: transparent;
+  }
+}
+.styHeading {
+  margin-top: 2%;
+  font-weight: bold;
+  color: orange; 
+  font-size: 2rem; 
 }
 
 /* Navbar */
@@ -464,12 +484,6 @@ body {
   border-radius: 50%;
 }
 
-.styHeading {
-  margin: 2%;
-  font-weight: bold;
-  color: #ffa500; 
-  font-size: 2rem; 
-}
 
             /* media queres */
 
@@ -672,7 +686,7 @@ width: 100%;
 }
 
 /* Movies section */
-#movieInp {
+ #movieInp {
   width: 90%; 
   margin: 0 auto;
   font-size: 0.9rem;
@@ -680,9 +694,9 @@ width: 100%;
 }
 #movieBtn {
   font-size: 0.9rem;
-}
+} 
 .movieContainer {
-  flex-direction: column; /* Stack movie details vertically */
+  flex-direction: column; 
   gap: 1rem;
 }
 .poster{
@@ -695,8 +709,7 @@ border: 20px;
 }
 .poster, .info {
   width: 100%; 
-  
-}
+} 
 
 /* JavaScript projects section */
 
